@@ -60,7 +60,7 @@ class FormTests(TestCase):
         self.assertEqual(updated_driver.license_number, "DEF67890")
 
     def test_driver_license_update_form_invalid(self):
-        form_data = {"license_number": "12345"}  # Invalid license number
+        form_data = {"license_number": "12345"}
         form = DriverLicenseUpdateForm(instance=self.driver, data=form_data)
         self.assertFalse(form.is_valid())
         self.assertIn("license_number", form.errors)
