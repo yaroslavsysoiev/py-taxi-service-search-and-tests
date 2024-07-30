@@ -6,8 +6,14 @@ from taxi.models import Manufacturer, Driver, Car
 
 class ModelsTests(TestCase):
     def test_manufacturer_str(self):
-        manufacturer = Manufacturer.objects.create(name="Toyota", country="Japan")
-        self.assertEqual(str(manufacturer), f"{manufacturer.name} {manufacturer.country}")
+        manufacturer = Manufacturer.objects.create(
+            name="Toyota",
+            country="Japan"
+        )
+        self.assertEqual(
+            str(manufacturer),
+            f"{manufacturer.name} {manufacturer.country}"
+        )
 
     def test_driver_str(self):
         driver = get_user_model().objects.create_user(
@@ -17,10 +23,16 @@ class ModelsTests(TestCase):
             last_name="One",
             license_number="AB1234567"
         )
-        self.assertEqual(str(driver), f"{driver.username} ({driver.first_name} {driver.last_name})")
+        self.assertEqual(
+            str(driver),
+            f"{driver.username} ({driver.first_name} {driver.last_name})"
+        )
 
     def test_car_str(self):
-        manufacturer = Manufacturer.objects.create(name="Toyota", country="Japan")
+        manufacturer = Manufacturer.objects.create(
+            name="Toyota",
+            country="Japan"
+        )
         car = Car.objects.create(model="Camry", manufacturer=manufacturer)
         self.assertEqual(str(car), car.model)
 
@@ -53,7 +65,10 @@ class ModelsTests(TestCase):
             )
 
     def test_car_has_multiple_drivers(self):
-        manufacturer = Manufacturer.objects.create(name="Toyota", country="Japan")
+        manufacturer = Manufacturer.objects.create(
+            name="Toyota",
+            country="Japan"
+        )
         car = Car.objects.create(model="Corolla", manufacturer=manufacturer)
         driver1 = get_user_model().objects.create_user(
             username="driver5",
